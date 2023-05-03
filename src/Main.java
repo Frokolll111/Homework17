@@ -22,34 +22,27 @@ public class Main {
     public static void task2() {
         System.out.println("Задача 2");
         List<Integer> nums2 = new ArrayList<>(List.of(1, 1, 2, 3, 4, 4, 5, 5, 6, 7));
-        Set<Integer> set = new TreeSet<>();
-        for (Integer num : nums2) {
-            if (num % 2 == 0) {
-                set.add(num);
+        Collections.sort(nums2);
+        int prevNum = Integer.MIN_VALUE;
+        for (int num : nums2) {
+            if (num % 2 == 0 && num != prevNum) {
+                System.out.println(num);
+                prevNum = num;
             }
         }
-        System.out.println(set);
     }
 
     public static void task3() {
         System.out.println("Задача 3");
         List<String> strings = new ArrayList<>(List.of("один", "один", "два", "два", "два", "три", "три", "три"));
-        Set<String> set2 = new HashSet<>(strings);
-        System.out.println(set2);
+        Set<String> set = new HashSet<>(strings);
+        System.out.println(set);
     }
 
     public static void task4() {
         System.out.println("Задача 4");
         List<String> strings = new ArrayList<>(List.of("один", "один", "два", "два", "два", "три", "три", "три"));
-        Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < strings.size(); i++) {
-            int counter = 0;
-            for (String string : strings) {
-                if (strings.get(i).equals(string)) {
-                    map.put(strings.get(i), counter++);
-                }
-            }
-        }
-        System.out.println(map);
+        Set<String> uniqueWords = new HashSet<>(strings);
+        System.out.println(strings.size() - uniqueWords.size());
     }
 }
